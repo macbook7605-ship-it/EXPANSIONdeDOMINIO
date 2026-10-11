@@ -4,4 +4,4 @@ services:
     restart: unless-stopped
     ports:
       - "8080:80"
-    command: ["sh", "-c", "until wget -qO /tmp/site.tgz https://codeload.github.com/macbook7605-ship-it/EXPANSIOdeDOMINIO/tar.gz/refs/heads/main; do echo 'Esperando a GitHub...'; sleep 10; done && mkdir -p /tmp/x && tar xzf /tmp/site.tgz -C /tmp/x && rm -rf /usr/share/nginx/html/* && cp -r /tmp/x/*/site/. /usr/share/nginx/html/ && echo 'Web EXPANSIONdeDOMINIO publicada' && exec nginx -g 'daemon off;'"]
+    command: ["sh", "-c", "until wget -qO /tmp/site.tgz https://codeload.github.com/macbook7605-ship-it/EXPANSIONdeDOMINIO/tar.gz/refs/heads/main; do echo 'Esperando a GitHub...'; sleep 10; done && mkdir -p /tmp/x && tar xzf /tmp/site.tgz -C /tmp/x && rm -rf /usr/share/nginx/html/* && cp -r /tmp/x/*/site/. /usr/share/nginx/html/ && echo 'Web EXPANSIONdeDOMINIO publicada' && exec nginx -g 'daemon off;'"]
