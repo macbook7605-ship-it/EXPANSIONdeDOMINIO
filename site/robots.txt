@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /estadisticas/
+
+Sitemap: __SITE__/sitemap.xml

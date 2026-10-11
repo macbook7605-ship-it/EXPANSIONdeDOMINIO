@@ -8,6 +8,14 @@ rm -rf /usr/share/nginx/html/*
 cp -r "$REPO_DIR/site/." /usr/share/nginx/html/
 cp "$REPO_DIR/deploy/nginx.conf" /etc/nginx/conf.d/default.conf
 
+# Red de seguridad: si la configuración tiene errores, se usa una versión básica
+mkdir -p /var/log/nginx-stats && touch /var/log/nginx-stats/access.log && : > /etc/nginx/stats.htpasswd
+if ! nginx -t >/dev/null 2>&1; then
+  echo "AVISO: nginx.conf con errores; se usa la configuración básica"
+  nginx -t 2>&1 | tail -3
+  sed -i '/sub_filter/d; /^map /,/^}/d' /etc/nginx/conf.d/default.conf
+fi
+
 # Usuario y contraseña del panel /estadisticas/ (la contraseña viene de Hostinger)
 if [ -n "$STATS_PASS" ]; then
   printf 'admin:%s\n' "$(cryptpw -m sha512 "$STATS_PASS")" > /etc/nginx/stats.htpasswd
