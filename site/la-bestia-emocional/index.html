@@ -143,8 +143,8 @@
 
       <div class="buy">
         <div class="price">US$ 7 <span class="price-note">pago único</span></div>
-        <!-- REEMPLAZAR: pega aquí el enlace de pago o de la página de ventas de Hotmart -->
-        <a class="btn btn-gold btn-big" href="#HOTMART" data-hotmart="pendiente">Quiero la versión completa</a>
+        <!-- "comprar" redirige al enlace de Hotmart (se configura en deploy/nginx.conf) y cuenta los clics en las estadísticas -->
+        <a class="btn btn-gold btn-big" href="comprar">Quiero la versión completa</a>
         <p class="small">Pago seguro y acceso inmediato a través de Hotmart · Garantía de 7 días.</p>
       </div>
     </div>
@@ -230,6 +230,12 @@
     <p class="small">© <span id="y">2026</span> EXPANSIONdeDOMINIO. Todos los derechos reservados.</p>
   </div>
 </footer>
+
+<!-- Barra fija de compra (solo móvil) -->
+<div class="mobile-buy" aria-label="Comprar la versión completa">
+  <div class="mobile-buy-text"><strong>Versión completa</strong><span>US$ 7 · pago único</span></div>
+  <a class="btn btn-gold" href="comprar">Comprar</a>
+</div>
 
 <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>

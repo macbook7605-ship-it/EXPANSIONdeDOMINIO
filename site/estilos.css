@@ -164,3 +164,14 @@ footer p { max-width: 640px; margin: 10px auto 0; }
   .book-cover img, .soon-cover { max-width: 220px; margin: 0 auto; }
 }
 .price-note { display: block; font-family: var(--sans); font-size: 12px; letter-spacing: .25em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+
+/* Barra fija de compra en móvil */
+.mobile-buy { display: none; }
+@media (max-width: 860px) {
+  .mobile-buy { display: flex; align-items: center; justify-content: space-between; gap: 12px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: rgba(20, 18, 16, .97); border-top: 1px solid var(--gold); padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); }
+  .mobile-buy-text { display: flex; flex-direction: column; line-height: 1.2; }
+  .mobile-buy-text strong { color: var(--cream); font-size: 14px; }
+  .mobile-buy-text span { color: var(--gold); font-size: 13px; }
+  .mobile-buy .btn { width: auto; padding: 12px 22px; flex: none; }
+  body:has(.mobile-buy) { padding-bottom: 76px; }
+}
