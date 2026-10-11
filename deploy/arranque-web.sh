@@ -28,8 +28,17 @@ touch /var/log/nginx-stats/access.log
 # Estadísticas: GoAccess regenera el informe cada 5 minutos en segundo plano
 mkdir -p /usr/share/nginx/stats
 if apk add --no-cache goaccess >/dev/null 2>&1; then
-  ( while true; do
-      goaccess /var/log/nginx-stats/access.log --log-format=COMBINED \
+  ( L=/var/log/nginx-stats
+    while true; do
+      # Rotación mensual: se archiva el registro del mes anterior y se borran los de más de 12 meses
+      M=$(date +%Y-%m)
+      [ -f "$L/.mes" ] || echo "$M" > "$L/.mes"
+      if [ "$(cat "$L/.mes")" != "$M" ]; then
+        mv "$L/access.log" "$L/access-$(cat "$L/.mes").log" && touch "$L/access.log" && nginx -s reopen
+        echo "$M" > "$L/.mes"
+      fi
+      ls -1 "$L"/access-*.log 2>/dev/null | sort -r | tail -n +12 | xargs -r rm -f
+      goaccess $(ls -1 "$L"/access-*.log 2>/dev/null) "$L/access.log" --log-format=COMBINED \
         --html-report-title="EXPANSIONdeDOMINIO" -o /usr/share/nginx/stats/index.html >/dev/null 2>&1
       sleep 300
     done ) &
