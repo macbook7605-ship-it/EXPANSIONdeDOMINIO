@@ -163,3 +163,4 @@ footer p { max-width: 640px; margin: 10px auto 0; }
   .book { grid-template-columns: 1fr; padding: 24px; }
   .book-cover img, .soon-cover { max-width: 220px; margin: 0 auto; }
 }
+.price-note { display: block; font-family: var(--sans); font-size: 12px; letter-spacing: .25em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
