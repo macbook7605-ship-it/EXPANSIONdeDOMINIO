@@ -12,7 +12,7 @@ services:
     volumes:
       - logs:/var/log/nginx-stats
       - report:/usr/share/nginx/stats
-    command: ["sh", "-c", "until wget -qO /tmp/site.tgz https://codeload.github.com/macbook7605-ship-it/EXPANSIONdeDOMINIO/tar.gz/refs/heads/main; do echo 'Esperando a GitHub...'; sleep 10; done && mkdir -p /tmp/x && tar xzf /tmp/site.tgz -C /tmp/x && rm -rf /usr/share/nginx/html/* && cp -r /tmp/x/*/site/. /usr/share/nginx/html/ && cp /tmp/x/*/deploy/nginx.conf /etc/nginx/conf.d/default.conf && echo \"admin:$$(cryptpw -m sha512 \"$$STATS_PASS\")\" > /etc/nginx/stats.htpasswd && touch /var/log/nginx-stats/access.log && echo 'Web EXPANSIONdeDOMINIO publicada' && exec nginx -g 'daemon off;'"]
+    command: ["sh", "-c", "until wget -qO /tmp/site.tgz https://codeload.github.com/macbook7605-ship-it/EXPANSIONdeDOMINIO/tar.gz/refs/heads/main; do echo Esperando; sleep 10; done; mkdir -p /tmp/x && tar xzf /tmp/site.tgz -C /tmp/x && sh /tmp/x/EXPANSIONdeDOMINIO-main/deploy/arranque-web.sh"]
   stats:
     image: allinurl/goaccess:latest
     restart: unless-stopped
