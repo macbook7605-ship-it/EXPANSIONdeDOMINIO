@@ -13,13 +13,6 @@ services:
       - logs:/var/log/nginx-stats
       - report:/usr/share/nginx/stats
     command: ["sh", "-c", "until wget -qO /tmp/site.tgz https://codeload.github.com/macbook7605-ship-it/EXPANSIONdeDOMINIO/tar.gz/refs/heads/main; do echo Esperando; sleep 10; done; mkdir -p /tmp/x && tar xzf /tmp/site.tgz -C /tmp/x && sh /tmp/x/EXPANSIONdeDOMINIO-main/deploy/arranque-web.sh"]
-  stats:
-    image: allinurl/goaccess:latest
-    restart: unless-stopped
-    volumes:
-      - logs:/logs:ro
-      - report:/report
-    entrypoint: ["sh", "-c", "until [ -f /logs/access.log ]; do sleep 5; done; while true; do goaccess /logs/access.log --log-format=COMBINED --html-report-title='EXPANSIONdeDOMINIO' -o /report/index.html 2>/dev/null; sleep 300; done"]
 volumes:
   logs:
     name: expansion_logs

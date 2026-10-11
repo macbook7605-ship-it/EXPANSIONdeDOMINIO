@@ -17,5 +17,18 @@ fi
 
 mkdir -p /var/log/nginx-stats
 touch /var/log/nginx-stats/access.log
+# Estadísticas: GoAccess regenera el informe cada 5 minutos en segundo plano
+mkdir -p /usr/share/nginx/stats
+if apk add --no-cache goaccess >/dev/null 2>&1; then
+  ( while true; do
+      goaccess /var/log/nginx-stats/access.log --log-format=COMBINED \
+        --html-report-title="EXPANSIONdeDOMINIO" -o /usr/share/nginx/stats/index.html >/dev/null 2>&1
+      sleep 300
+    done ) &
+  echo "Estadísticas activadas"
+else
+  echo "No se pudo instalar GoAccess; la web funciona igual"
+fi
+
 echo "Web EXPANSIONdeDOMINIO publicada"
 exec nginx -g 'daemon off;'
