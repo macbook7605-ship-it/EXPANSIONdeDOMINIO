@@ -18,7 +18,7 @@ img { max-width: 100%; height: auto; display: block; }
 a { color: var(--gold); }
 
 .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 20px; }
-.narrow { max-width: 760px; }
+.narrow { max-width: 760px; margin-left: auto; margin-right: auto; }
 .center { text-align: center; }
 
 /* Cabecera */
@@ -138,4 +138,28 @@ footer p { max-width: 640px; margin: 10px auto 0; }
   .btn { width: 100%; }
   .sample { padding: 24px 18px; }
   .logo { font-size: 14px; }
+}
+
+/* Página de inicio (marca y catálogo) */
+.home-hero { padding: 96px 0 104px; }
+.brand-big { font-family: var(--sans); font-weight: 700; letter-spacing: .14em; font-size: clamp(22px, 4vw, 34px); color: var(--cream); margin-bottom: 28px; }
+.brand-big span { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--gold); letter-spacing: 0; margin: 0 4px; }
+.center-lead { margin: 0 auto; }
+.pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 36px; }
+.pillar { border: 1px solid var(--line); background: var(--bg); padding: 28px 24px; }
+.pillar span { font-weight: 700; color: var(--gold); font-size: 14px; letter-spacing: .2em; display: block; margin-bottom: 10px; }
+.pillar p { margin: 0; font-size: 15px; }
+.catalog { display: grid; gap: 28px; margin-top: 40px; }
+.book { display: grid; grid-template-columns: 240px 1fr; gap: 40px; align-items: center; border: 1px solid var(--line); background: var(--bg-alt); padding: 32px; }
+.book-cover img { box-shadow: 0 20px 40px rgba(0, 0, 0, .55); border: 1px solid var(--line); }
+.book h3 { font-size: 30px; margin-bottom: 4px; }
+.book-sub { color: var(--gold); font-family: var(--serif); font-style: italic; font-size: 18px; }
+.book .ctas { margin-top: 20px; }
+.book.soon { opacity: .75; }
+.soon-cover { aspect-ratio: 210 / 297; border: 1px dashed #5a5248; display: flex; align-items: center; justify-content: center; }
+.soon-cover span { font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+@media (max-width: 860px) {
+  .pillars { grid-template-columns: 1fr; }
+  .book { grid-template-columns: 1fr; padding: 24px; }
+  .book-cover img, .soon-cover { max-width: 220px; margin: 0 auto; }
 }
