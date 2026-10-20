@@ -13,7 +13,7 @@ mkdir -p /var/log/nginx-stats && touch /var/log/nginx-stats/access.log && : > /e
 if ! nginx -t >/dev/null 2>&1; then
   echo "AVISO: nginx.conf con errores; se usa la configuración básica"
   nginx -t 2>&1 | tail -3
-  sed -i '/sub_filter/d; /^map /,/^}/d' /etc/nginx/conf.d/default.conf
+  sed -i '/sub_filter/d; /real_ip/d; /^map /,/^}/d' /etc/nginx/conf.d/default.conf
 fi
 
 # Usuario y contraseña del panel /estadisticas/ (la contraseña viene de Hostinger)
@@ -40,6 +40,7 @@ if apk add --no-cache goaccess >/dev/null 2>&1; then
       ls -1 "$L"/access-*.log 2>/dev/null | sort -r | tail -n +12 | xargs -r rm -f
       goaccess $(ls -1 "$L"/access-*.log 2>/dev/null) "$L/access.log" --log-format=COMBINED \
         --html-report-title="EXPANSIONdeDOMINIO" -o /usr/share/nginx/stats/index.html >/dev/null 2>&1
+      sh "$REPO_DIR/deploy/resumen.sh" >/dev/null 2>&1 || true
       sleep 300
     done ) &
   echo "Estadísticas activadas"
