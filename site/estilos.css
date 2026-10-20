@@ -188,3 +188,8 @@ footer p { max-width: 640px; margin: 10px auto 0; }
 }
 .book.featured { border-color: var(--gold); }
 section[id] { scroll-margin-top: 72px; }
+
+/* Acceso al test */
+.test-link { margin-top: 18px; font-size: 15px; color: var(--cream-soft); }
+.test-link a { color: var(--gold); font-weight: 600; text-decoration: none; }
+.test-link a:hover { text-decoration: underline; }

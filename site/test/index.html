@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test de dominio emocional · EXPANSIONdeDOMINIO</title>
+<meta name="description" content="16 preguntas, 3 minutos. Descubre en qué áreas tus emociones todavía deciden por ti y qué hábitos te tocan primero.">
+<link rel="canonical" href="__SITE__/test/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_LA">
+<meta property="og:site_name" content="EXPANSIONdeDOMINIO">
+<meta property="og:title" content="¿Quién manda: tú o tus emociones? · Test de dominio emocional">
+<meta property="og:description" content="16 situaciones reales, 3 minutos y sin registro. Descubre en qué áreas tus emociones todavía deciden por ti.">
+<meta property="og:url" content="__SITE__/test/">
+<meta property="og:image" content="__SITE__/og-inicio.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="__SITE__/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="__SITE__/favicon-32.png">
+<link rel="apple-touch-icon" href="__SITE__/apple-touch-icon.png">
+<meta name="theme-color" content="#141210">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estilos.css">
+<style>
+.quiz { padding: 48px 0 80px; min-height: 80vh; }
+.screen { display: none; }
+.screen.on { display: block; animation: fade .25s ease; }
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+.intro h1 { font-size: clamp(34px, 6vw, 54px); }
+.facts { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 22px 0 6px; color: var(--cream-soft); font-size: 14px; }
+.facts span::before { content: "— "; color: var(--gold); }
+
+.progress { height: 3px; background: var(--line); margin-bottom: 28px; }
+.progress div { height: 100%; width: 0; background: var(--gold); transition: width .3s; }
+.qmeta { display: flex; justify-content: space-between; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.qmeta b { color: var(--gold); font-weight: 600; }
+.question { font-family: var(--serif); font-size: clamp(24px, 4vw, 32px); line-height: 1.25; color: #f6efe4; margin-bottom: 26px; }
+.options { display: grid; gap: 12px; }
+.opt { text-align: left; background: var(--bg-alt); border: 1px solid var(--line); color: var(--cream); font: inherit; font-size: 16px; padding: 18px 20px; border-radius: 2px; cursor: pointer; transition: border-color .15s, background .15s; }
+.opt:hover { border-color: var(--gold); }
+.opt.sel { border-color: var(--gold); background: rgba(201, 164, 92, .12); }
+.back { background: none; border: 0; color: var(--muted); font: inherit; font-size: 14px; margin-top: 22px; cursor: pointer; padding: 6px 0; }
+.back:hover { color: var(--gold); }
+
+.score { text-align: center; padding: 10px 0 34px; border-bottom: 1px solid var(--line); margin-bottom: 34px; }
+.score .pct { font-family: var(--serif); font-size: 84px; line-height: 1; color: var(--gold); font-weight: 700; }
+.score .lvl { font-size: 13px; letter-spacing: .3em; text-transform: uppercase; color: var(--cream); margin: 12px 0 14px; }
+.score p { max-width: 520px; margin: 0 auto; }
+
+.bars { display: grid; gap: 14px; margin-bottom: 40px; }
+.bar-top { display: flex; justify-content: space-between; font-size: 14px; color: var(--cream); margin-bottom: 6px; }
+.bar-top span:last-child { color: var(--muted); }
+.bar { height: 6px; background: var(--line); }
+.bar div { height: 100%; background: var(--gold); width: 0; transition: width .8s ease; }
+.bar.weak div { background: #8a8073; }
+
+.focus { border: 1px solid var(--line); background: var(--bg-alt); padding: 26px 24px; margin-bottom: 18px; }
+.focus .kicker { margin-bottom: 8px; }
+.focus h3 { margin-bottom: 10px; }
+.focus ul { list-style: none; margin-top: 14px; }
+.focus li { padding: 10px 0; border-top: 1px solid var(--line); color: var(--cream); display: flex; gap: 14px; }
+.focus li b { font-family: var(--serif); color: var(--gold); min-width: 30px; }
+
+.share { text-align: center; margin: 40px 0 10px; }
+.share .ctas { justify-content: center; }
+.cta-box { text-align: center; border-top: 1px solid var(--line); padding-top: 40px; margin-top: 30px; }
+button.btn-line { background: none; cursor: pointer; font-family: inherit; }
+.disclaimer { font-size: 13px; color: var(--muted); margin-top: 36px; text-align: center; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a href="../" class="logo">EXPANSION<span>de</span>DOMINIO</a>
+    <nav>
+      <a href="../">Inicio</a>
+      <a href="../habitos-emocionales/">Hábitos emocionales</a>
+    </nav>
+  </div>
+</header>
+
+<main class="quiz">
+  <div class="wrap narrow">
+
+    <!-- Portada -->
+    <section class="screen on intro" id="s-intro">
+      <div class="kicker">Test de dominio emocional</div>
+      <h1>¿Quién manda:<br><span>tú o tus emociones?</span></h1>
+      <p class="lead">16 situaciones reales. Responde con lo que sueles hacer, no con lo que deberías hacer.</p>
+      <div class="facts"><span>3 minutos</span><span>Sin registro</span><span>Resultado al instante</span></div>
+      <div class="ctas"><button class="btn btn-gold btn-big" id="start">Empezar el test</button></div>
+      <p class="small">Tus respuestas no se guardan ni se envían a ningún sitio.</p>
+    </section>
+
+    <!-- Preguntas -->
+    <section class="screen" id="s-q">
+      <div class="progress"><div id="bar"></div></div>
+      <div class="qmeta"><span id="qblock"></span><span><b id="qnum">1</b> / 16</span></div>
+      <div class="question" id="qtext"></div>
+      <div class="options" id="qopts"></div>
+      <button class="back" id="back">← Anterior</button>
+    </section>
+
+    <!-- Resultado -->
+    <section class="screen" id="s-r">
+      <div class="score">
+        <div class="kicker muted">Tu resultado</div>
+        <div class="pct" id="rpct">0%</div>
+        <div class="lvl" id="rlvl"></div>
+        <p id="rtxt"></p>
+      </div>
+
+      <div class="kicker">Tus 8 áreas</div>
+      <div class="bars" id="rbars"></div>
+
+      <div class="kicker">Por dónde empezar</div>
+      <div id="rfocus"></div>
+
+      <div class="share">
+        <p class="note">¿Te atreves a pasárselo a un amigo?</p>
+        <div class="ctas">
+          <button class="btn btn-line" id="share">Compartir mi resultado</button>
+        </div>
+      </div>
+
+      <div class="cta-box">
+        <h2>Entrena estas áreas<br><span class="gold">hábito por hábito.</span></h2>
+        <p>Los 100 hábitos, gratis en PDF. Y si quieres los pasos, ejemplos y ejercicios de cada uno, la versión completa.</p>
+        <div class="ctas center">
+          <a class="btn btn-gold" href="../habitos-emocionales/descargas/habitos-emocionales-version-gratuita.pdf" download>Descargar gratis los 100 hábitos</a>
+          <a class="btn btn-line" href="../habitos-emocionales/#completa">Versión completa · US$ 7</a>
+        </div>
+        <button class="back" id="again">Repetir el test</button>
+      </div>
+
+      <p class="disclaimer">Este test es un autoexamen de hábitos para tu crecimiento personal. No es un diagnóstico psicológico ni sustituye la ayuda de un profesional.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <a href="../" class="logo">EXPANSION<span>de</span>DOMINIO</a>
+  <p class="small">© 2026 EXPANSIONdeDOMINIO</p>
+</footer>
+
+<script>
+const BLOQUES = [
+  { n: "I", t: "Dominar el impulso", hab: [[1, "Nunca reaccionar en caliente"], [21, "No discutir alterado"], [68, "Pensar en frío lo que sientes en caliente"]] },
+  { n: "II", t: "Conocer tus patrones", hab: [[14, "Identificar tu patrón tóxico antes de que se active"], [55, "Revisar tu historia emocional como un detective"], [98, "Utilizar cada recaída como un mapa, no como un látigo"]] },
+  { n: "III", t: "Emociones intensas", hab: [[66, "Aprender a sentir rabia sin destruirla"], [12, "Usar la rabia como gasolina"], [11, "Tolerar el vacío sin buscar anestesia"]] },
+  { n: "IV", t: "Disciplina mental y física", hab: [[6, "Reiniciar tu mente cada mañana"], [35, "Entrenar el cuerpo para fortalecer la mente"], [77, "Corregirte a ti mismo con firmeza, no con autoodio"]] },
+  { n: "V", t: "Límites y protección de tu energía", hab: [[75, "Fijar límites sin pedir permiso"], [44, "No ceder por culpa cuando pones límites"], [61, "Cortar conversaciones que te reducen"]] },
+  { n: "VI", t: "Apego y necesidad", hab: [[9, "No perseguir a quien se aleja"], [20, "No rogar presencia"], [62, "No volver a pedir validación a quien te la negó"]] },
+  { n: "VII", t: "Saber soltar", hab: [[34, "No quedarte por apego"], [42, "No volver a vínculos donde ya te perdiste una vez"], [71, "Romper la obsesión con cierres perfectos"]] },
+  { n: "VIII", t: "Identidad, carácter y rumbo", hab: [[94, "Aprender a estar solo y amarlo"], [51, "Dejar de buscar aprobación"], [86, "Construir tu propio código de honor emocional"]] }
+];
+
+// Cada opción vale de 0 (la emoción decide) a 3 (tú decides). Se muestran en orden aleatorio.
+const PREGUNTAS = [
+  { b: 0, q: "Alguien te falta el respeto delante de otros. Lo más probable es que…", o: [
+    "Respondes al momento, y más fuerte.",
+    "Te lo tragas y explotas después con otra persona.",
+    "Te contienes, pero le das vueltas durante horas.",
+    "Dejas pasar el momento y lo hablas después, en frío."] },
+  { b: 0, q: "Te llega un mensaje que te enciende. Tú…", o: [
+    "Respondes en el acto.",
+    "Escribes una respuesta larga y la mandas igual.",
+    "Esperas un poco, pero contestas todavía molesto.",
+    "Lo dejas reposar y respondes cuando ya no necesitas ganar."] },
+  { b: 1, q: "Cuando una situación se repite y termina igual que siempre, piensas que…", o: [
+    "Es mala suerte.",
+    "La culpa es de los demás.",
+    "Algo hago yo, pero no sé qué.",
+    "Sé cuál es mi parte y qué es lo que me activa."] },
+  { b: 1, q: "¿Ves venir lo que te saca de tu centro?", o: [
+    "No, siempre me toma por sorpresa.",
+    "Me doy cuenta cuando ya exploté.",
+    "A veces lo veo venir.",
+    "Sí, reconozco mis señales y me anticipo."] },
+  { b: 2, q: "Cuando sientes un vacío o una tristeza fuerte, sueles…", o: [
+    "Taparlo con alcohol, redes, comida o compañía.",
+    "Distraerte hasta que se pase.",
+    "Aguantarlo en silencio, sin que nadie lo note.",
+    "Sentirlo sin huir y sin tomar decisiones en ese estado."] },
+  { b: 2, q: "Con la rabia, tú…", o: [
+    "La descargas con quien tengas cerca.",
+    "Haces como si no pasara nada.",
+    "La sientes, pero no sabes qué hacer con ella.",
+    "La reconoces y la conviertes en acción: entrenar, trabajar, decidir."] },
+  { b: 3, q: "Tus mañanas normalmente empiezan…", o: [
+    "Con el teléfono apenas abres los ojos.",
+    "Corriendo, sin ningún orden.",
+    "Con algo de rutina, aunque la rompo seguido.",
+    "Con una rutina que me pone en marcha."] },
+  { b: 3, q: "Cuando fallas en algo importante…", o: [
+    "Piensas que no sirves.",
+    "Lo dejas todo por un tiempo.",
+    "Te exiges más, aunque sea a golpes.",
+    "Te corriges con firmeza y sigues."] },
+  { b: 4, q: "Alguien te pide algo que no quieres hacer. Tú…", o: [
+    "Dices que sí. Siempre.",
+    "Dices que sí y después te quejas.",
+    "Dices que no, pero te sientes culpable.",
+    "Dices que no con calma y lo sostienes."] },
+  { b: 4, q: "Si una persona o conversación te drena…", o: [
+    "Sigues ahí aunque te haga daño.",
+    "Te quejas, pero no cambias nada.",
+    "Te alejas solo a veces.",
+    "Le reduces el acceso sin dar explicaciones de más."] },
+  { b: 5, q: "Alguien que te importa empieza a alejarse. Tú…", o: [
+    "Lo buscas más, le escribes, le pides explicaciones.",
+    "Revisas sus redes y su última conexión.",
+    "Te contienes, pero no dejas de pensar en eso.",
+    "Lo dejas ir y te enfocas en tu vida."] },
+  { b: 5, q: "La aprobación de los demás (pareja, padre, jefe, amigos)…", o: [
+    "La necesito para sentirme bien.",
+    "Me afecta mucho cuando no llega.",
+    "Me importa, pero no me define.",
+    "Me guío por mi propio criterio."] },
+  { b: 6, q: "Con tu ex, o con alguien que te hizo daño…", o: [
+    "Seguimos en contacto y vuelvo cada tanto.",
+    "No hablamos, pero pienso en volver.",
+    "Lo corté, pero sigo esperando una explicación.",
+    "Lo cerré, aunque no tuvo el final que quería."] },
+  { b: 6, q: "Una relación (pareja, amistad o trabajo) ya no te suma. Tú…", o: [
+    "Te quedas por costumbre o por miedo.",
+    "Te quedas esperando que cambie.",
+    "Sabes que debes irte, pero lo vas postergando.",
+    "Te vas cuando lo tienes claro."] },
+  { b: 7, q: "Cuando estás solo, sin planes ni pantalla…", o: [
+    "Lo evito a toda costa.",
+    "Me incomoda bastante.",
+    "Lo tolero.",
+    "Lo disfruto: me sirve para pensar."] },
+  { b: 7, q: "¿Tienes claro hacia dónde vas y qué no negocias?", o: [
+    "No, voy según lo que pase.",
+    "Cambio de rumbo según lo que opinen otros.",
+    "Tengo una idea, pero me cuesta sostenerla.",
+    "Sí, tengo mi propio código y lo sigo."] }
+];
+
+const NIVELES = [
+  { min: 80, t: "Nivel Bestia", d: "Te gobiernas en la mayoría de situaciones. Ahora toca pulir las áreas donde todavía se te escapa el mando." },
+  { min: 50, t: "Nivel Dominio", d: "Tienes control en varias áreas, pero hay frentes donde tus emociones siguen decidiendo por ti." },
+  { min: 0, t: "Nivel Base", d: "Hoy la emoción decide por ti en muchas situaciones. La buena noticia: el dominio se entrena, y aquí tienes por dónde empezar." }
+];
+
+const $ = id => document.getElementById(id);
+let i = 0, resp = [], orden = [];
+
+function barajar(n) { const a = [...Array(n).keys()]; for (let k = n - 1; k > 0; k--) { const j = Math.floor(Math.random() * (k + 1)); [a[k], a[j]] = [a[j], a[k]]; } return a; }
+function ver(id) { document.querySelectorAll(".screen").forEach(s => s.classList.toggle("on", s.id === id)); window.scrollTo(0, 0); }
+
+function pintar() {
+  const p = PREGUNTAS[i];
+  $("bar").style.width = (i / PREGUNTAS.length * 100) + "%";
+  $("qnum").textContent = i + 1;
+  $("qblock").textContent = "Bloque " + BLOQUES[p.b].n;
+  $("qtext").textContent = p.q;
+  $("qopts").innerHTML = "";
+  orden[i] = orden[i] || barajar(4);
+  orden[i].forEach(v => {
+    const b = document.createElement("button");
+    b.className = "opt" + (resp[i] === v ? " sel" : "");
+    b.textContent = p.o[v];
+    b.onclick = () => { resp[i] = v; b.classList.add("sel"); setTimeout(() => { i++; i < PREGUNTAS.length ? pintar() : resultado(); }, 180); };
+    $("qopts").appendChild(b);
+  });
+  $("back").style.visibility = i ? "visible" : "hidden";
+}
+
+function resultado() {
+  const pb = BLOQUES.map((_, k) => {
+    const v = PREGUNTAS.map((p, j) => p.b === k ? resp[j] : null).filter(x => x !== null);
+    return Math.round(v.reduce((a, c) => a + c, 0) / (v.length * 3) * 100);
+  });
+  const total = Math.round(resp.reduce((a, c) => a + c, 0) / (PREGUNTAS.length * 3) * 100);
+  const nivel = NIVELES.find(n => total >= n.min);
+  const debiles = pb.map((v, k) => [v, k]).sort((a, b) => a[0] - b[0]).slice(0, 2).map(x => x[1]);
+
+  $("rlvl").textContent = nivel.t;
+  $("rtxt").textContent = nivel.d;
+  $("rbars").innerHTML = BLOQUES.map((b, k) =>
+    `<div><div class="bar-top"><span>${b.n} · ${b.t}</span><span>${pb[k]}%</span></div><div class="bar${debiles.includes(k) ? " weak" : ""}"><div data-w="${pb[k]}"></div></div></div>`).join("");
+  $("rfocus").innerHTML = debiles.map((k, n) => `
+    <div class="focus">
+      <div class="kicker">${n === 0 ? "Tu punto más débil" : "Segundo frente"} · ${pb[k]}%</div>
+      <h3>${BLOQUES[k].t}</h3>
+      <p>Empieza por estos hábitos:</p>
+      <ul>${BLOQUES[k].hab.map(h => `<li><b>${h[0]}</b><span>${h[1]}</span></li>`).join("")}</ul>
+    </div>`).join("");
+
+  ver("s-r");
+  let c = 0; const t = setInterval(() => { c = Math.min(total, c + 2); $("rpct").textContent = c + "%"; if (c >= total) clearInterval(t); }, 18);
+  setTimeout(() => document.querySelectorAll(".bar div[data-w]").forEach(d => d.style.width = d.dataset.w + "%"), 60);
+
+  $("share").onclick = async () => {
+    const url = location.origin + "/test/";
+    const txt = `Hice el test de dominio emocional y saqué ${total}% (${nivel.t}). ¿Quién manda en ti: tú o tus emociones?`;
+    if (navigator.share) { try { await navigator.share({ title: "Test de dominio emocional", text: txt, url }); } catch (e) {} }
+    else window.open("https://wa.me/?text=" + encodeURIComponent(txt + " " + url), "_blank");
+  };
+}
+
+$("start").onclick = () => { i = 0; resp = []; orden = []; ver("s-q"); pintar(); };
+$("back").onclick = () => { if (i > 0) { i--; pintar(); } };
+$("again").onclick = () => $("start").onclick();
+</script>
+</body>
+</html>
