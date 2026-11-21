@@ -23,7 +23,7 @@ BEGIN {
   quien = $1 "|" ua
   if (met != "GET" && met != "POST") next
   if (ruta ~ /version-gratuita\.pdf$/ && (st == 200 || st == 206)) cuenta("pdf", dia, quien)
-  else if (ruta == "/habitos-emocionales/comprar" && st == 302) cuenta("buy", dia, quien)
+  else if (ruta ~ /\/comprar$/ && st == 302) cuenta("buy", dia, quien)
   else if ((ruta == "/test/" || ruta == "/test") && st == 200) cuenta("test", dia, quien)
   if (st == 200 && (ruta ~ /\/$/ || ruta ~ /\.html$/)) cuenta("vis", dia, quien)
 }
